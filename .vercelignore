@@ -1,0 +1,16 @@
+# Exclude the old individual endpoint files so they don't count
+# as separate serverless functions (Vercel Hobby plan caps at 12).
+# They are replaced by consolidated catch-all routers.
+api/auth/login.js
+api/auth/poll.js
+api/auth/complete.js
+api/auth/validate.js
+api/admin/login.js
+api/admin/stats.js
+api/admin/users.js
+api/admin/user-action.js
+api/admin/hits.js
+api/admin/proxies.js
+api/proxy/save.js
+api/proxy/list.js
+api/proxy/check.js
