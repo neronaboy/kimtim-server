@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kimtim — Login</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      color:#f0f6ff;
+    }
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:24px;
+      padding:48px 40px 40px;
+      width:100%;max-width:400px;
+      text-align:center;
+      backdrop-filter:blur(20px);
+      box-shadow:0 24px 60px rgba(0,0,0,0.4);
+    }
+    .logo{width:80px;height:80px;border-radius:50%;margin:0 auto 24px;display:block}
+    h1{font-size:26px;font-weight:800;margin-bottom:6px}
+    .sub{font-size:13px;color:rgba(240,246,255,.5);margin-bottom:32px}
+    .step{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:14px;
+      padding:16px 20px;
+      font-size:13px;
+      color:rgba(240,246,255,.75);
+      margin-bottom:24px;
+      line-height:1.7;
+      text-align:left;
+    }
+    .step b{color:#7ef4bf}
+    #tg-widget-wrap{margin-bottom:20px}
+    .divider{
+      display:flex;align-items:center;gap:10px;
+      color:rgba(240,246,255,.3);font-size:12px;
+      margin-bottom:20px;
+    }
+    .divider::before,.divider::after{
+      content:'';flex:1;height:1px;
+      background:rgba(255,255,255,.08);
+    }
+    .manual-wrap{display:flex;gap:8px}
+    .manual-input{
+      flex:1;padding:10px 14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;color:#f0f6ff;font-size:13px;
+    }
+    .manual-input::placeholder{color:rgba(240,246,255,.3)}
+    .manual-input:focus{outline:none;border-color:#7ef4bf}
+    .manual-btn{
+      padding:10px 18px;
+      background:linear-gradient(135deg,#5ebba0,#3d9e84);
+      border:none;border-radius:10px;
+      color:#fff;font-size:13px;font-weight:700;cursor:pointer;
+      white-space:nowrap;
+    }
+    .manual-btn:hover{opacity:.9}
+    .msg{
+      margin-top:20px;padding:12px 16px;border-radius:10px;
+      font-size:13px;display:none;
+    }
+    .msg.success{background:rgba(94,187,172,.12);border:1px solid rgba(94,187,172,.25);color:#7ef4bf;display:block}
+    .msg.error{background:rgba(224,112,112,.1);border:1px solid rgba(224,112,112,.2);color:#ff9a9a;display:block}
+    .msg.info{background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.2);color:#a5b4fc;display:block}
+    .spinner{
+      width:20px;height:20px;
+      border:2px solid rgba(255,255,255,.15);
+      border-top-color:#7ef4bf;
+      border-radius:50%;animation:spin .7s linear infinite;
+      display:inline-block;vertical-align:middle;margin-right:8px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="/icons/icon128.png" alt="kimtim" onerror="this.style.display='none'">
+  <h1>kimtim</h1>
+  <p class="sub">Stripe Auto Hitter — Login</p>
+
+  <div class="step">
+    <b>Step 1</b> — Click the Telegram button below<br>
+    <b>Step 2</b> — Approve in the popup<br>
+    <b>Step 3</b> — Return to the extension (auto-login)
+  </div>
+
+  <!-- Telegram Login Widget (requires domain set in BotFather via /setdomain) -->
+  <div id="tg-widget-wrap"></div>
+
+  <div class="divider">or paste token manually</div>
+
+  <div class="manual-wrap">
+    <input class="manual-input" id="tokenInput" type="text"
+           placeholder="Paste token from Telegram bot" spellcheck="false">
+    <button class="manual-btn" id="tokenBtn">Login</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ── Config injected at build-time or read from URL ───
+  const params     = new URLSearchParams(location.search);
+  const state      = params.get('state') || '';
+  const BOT_NAME   = '<!-- BOT_USERNAME -->'; // replaced at deploy
+
+  // ── Telegram Login Widget ────────────────────────────
+  if (BOT_NAME && BOT_NAME !== '<!-- BOT_USERNAME -->') {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src   = 'https://telegram.org/js/telegram-widget.js?22';
+    script.setAttribute('data-telegram-login', BOT_NAME);
+    script.setAttribute('data-size', 'large');
+    script.setAttribute('data-radius', '10');
+    script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+    script.setAttribute('data-request-access', 'write');
+    document.getElementById('tg-widget-wrap').appendChild(script);
+  } else {
+    // Widget not configured — show bot-link fallback
+    document.getElementById('tg-widget-wrap').innerHTML =
+      '<p style="font-size:12px;color:rgba(240,246,255,.4);margin-bottom:8px">' +
+      'Widget requires BotFather /setdomain setup.<br>Use the bot or paste token below.</p>';
+  }
+
+  // ── Widget callback ──────────────────────────────────
+  window.onTelegramAuth = async function (user) {
+    showMsg('Completing login…', 'info', true);
+    try {
+      const r = await fetch('/api/auth/complete', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ state, ...user })
+      });
+      const d = await r.json();
+      if (d.success) {
+        showMsg('✅ Login successful! Return to the extension.', 'success');
+      } else {
+        showMsg(d.error || 'Login failed — please try again.', 'error');
+      }
+    } catch (e) {
+      showMsg('Network error — please try again.', 'error');
+    }
+  };
+
+  // ── Manual token submit ──────────────────────────────
+  document.getElementById('tokenBtn').addEventListener('click', async function () {
+    const token = document.getElementById('tokenInput').value.trim();
+    if (!token) { showMsg('Please enter your token.', 'error'); return; }
+
+    showMsg('Validating token…', 'info', true);
+    try {
+      // Validate token exists on server
+      const r = await fetch('/api/auth/validate', {
+        method:  'POST',
+        headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
+      });
+      const d = await r.json();
+      if (d.success) {
+        // If we have a state (polling flow), store the token against it
+        if (state) {
+          await fetch('/api/auth/token-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ state, token })
+          }).catch(() => {});
+        }
+        showMsg('✅ Token valid! The extension should now be logged in. You can close this tab.', 'success');
+      } else {
+        showMsg(d.error || 'Invalid token.', 'error');
+      }
+    } catch (e) {
+      showMsg('Network error — please try again.', 'error');
+    }
+  });
+
+  // ── Helpers ──────────────────────────────────────────
+  function showMsg(text, type, spinner) {
+    const el = document.getElementById('msg');
+    el.innerHTML = (spinner ? '<span class="spinner"></span>' : '') + text;
+    el.className = 'msg ' + type;
+  }
+})();
+</script>
+</body>
+</html>
