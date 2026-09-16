@@ -1,0 +1,16 @@
+{
+  "name": "kimtim-server",
+  "version": "1.0.0",
+  "description": "kimtim backend API — Vercel serverless",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
