@@ -22,15 +22,17 @@ module.exports = async (req, res) => {
     return res.status(403).json({ error: 'Unauthorized' });
   }
 
-  // Always return 200 fast — Telegram retries on non-200
-  res.status(200).json({ ok: true });
-
+  // Process the update FIRST, then respond 200 — so Vercel doesn't
+  // freeze the function before the reply to Telegram is sent.
   try {
     const update = req.body;
     if (update && update.message) await handleMessage(update.message);
   } catch (err) {
     console.error('[telegram-webhook]', err);
   }
+
+  // Always 200 so Telegram doesn't retry the update.
+  res.status(200).json({ ok: true });
 };
 
 // ────────────────────────────────────────────────────────
