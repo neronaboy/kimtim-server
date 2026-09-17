@@ -165,7 +165,14 @@ async function validate(req, res) {
 
 // ── router ───────────────────────────────────────────────
 module.exports = async (req, res) => {
-  const action = (req.query && Array.isArray(req.query.path) && req.query.path[0]) || '';
+  const _qp = req.query && req.query.path;
+  let action = Array.isArray(_qp) ? (_qp[0] || '') : (typeof _qp === 'string' ? _qp : '');
+  if (!action) {
+    try {
+      const _segs = String(req.url || '').split('?')[0].split('/').filter(Boolean);
+      action = _segs[_segs.length - 1] || '';
+    } catch (_e) { action = ''; }
+  }
   switch (action) {
     case 'login':    return login(req, res);
     case 'poll':     return poll(req, res);
