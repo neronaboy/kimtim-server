@@ -1,1 +1,35 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KICA8dGl0bGU+QXVkaW8gSGFuZGxlcjwvdGl0bGU+CiAgPHN0eWxlPgogICAgYm9keSB7CiAgICAgIHdpZHRoOiAxMDB2dzsKICAgICAgaGVpZ2h0OiAxMDB2aDsKICAgICAgbWFyZ2luOiAwOwogICAgICBwYWRkaW5nOiAwOwogICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKICAgIH0KICAgICNpbWFnZUNhbnZhcyB7CiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICAgICAgdG9wOiAtOTk5OXB4OwogICAgICBsZWZ0OiAtOTk5OXB4OwogICAgfQogICAgI3RlbXBJbnB1dCB7CiAgICAgIHBvc2l0aW9uOiBmaXhlZDsKICAgICAgdG9wOiAtOTk5OXB4OwogICAgICBsZWZ0OiAtOTk5OXB4OwogICAgICBvcGFjaXR5OiAwOwogICAgfQogIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CiAgPGNhbnZhcyBpZD0iaW1hZ2VDYW52YXMiPjwvY2FudmFzPgogIDxkaXYgaWQ9InRlbXBJbnB1dCIgY29udGVudGVkaXRhYmxlPSJ0cnVlIj48L2Rpdj4KICA8YXVkaW8gaWQ9ImhpdFNvdW5kIiBzcmM9InNvdW5kcy9oaXQud2F2IiBwcmVsb2FkPSJhdXRvIj48L2F1ZGlvPgogIDxzY3JpcHQgc3JjPSJzY3JpcHQvb2Zmc2NyZWVuLmpzIj48L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+Cg0KDQoNCg==
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Handler</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    #imageCanvas {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    #tempInput {
+      position: fixed;
+      top: -9999px;
+      left: -9999px;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="imageCanvas"></canvas>
+  <div id="tempInput" contenteditable="true"></div>
+  <audio id="hitSound" src="sounds/hit.wav" preload="auto"></audio>
+  <script src="script/offscreen.js"></script>
+</body>
+</html>
+
+
+
