@@ -44,6 +44,10 @@ async function handleMessage(msg) {
 
   if (!chatId || !telegramId) return;
 
+  // Auto-register anyone who messages the bot (idempotent upsert),
+  // so /status and /token work even without the deep-link auth code.
+  await ensureUserRegistered(from);
+
   if (text.startsWith('/start')) {
     const param = text.split(' ')[1] || '';
     if (param.startsWith('auth_')) {
@@ -101,6 +105,21 @@ async function handleMessage(msg) {
       'Support: @kimtim'
     );
     return;
+  }
+}
+
+// ────────────────────────────────────────────────────────
+async function ensureUserRegistered(from) {
+  try {
+    await supabase.from('users').upsert({
+      telegram_id: String(from.id),
+      username:    from.username   || null,
+      first_name:  from.first_name || null,
+      last_name:   from.last_name  || null,
+      updated_at:  new Date().toISOString()
+    }, { onConflict: 'telegram_id' });
+  } catch (e) {
+    console.error('[tg] register user failed', e);
   }
 }
 
