@@ -1,1 +1,179 @@
-J3VzZSBzdHJpY3QnOwovLyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKLy8gbG9naW4uanMgIOKAlCAga2ltdGltIHYyIHNlcnZlci1iYXNlZCBsb2dpbgovLwovLyBUd28gZmxvd3M6Ci8vICAgMS4gVGVsZWdyYW0gbG9naW4gIOKGkiBvcGVucyBib3QgZGVlcC1saW5rLCBwb2xscyBzZXJ2ZXIKLy8gICAyLiBNYW51YWwgdG9rZW4gICAg4oaSIHZhbGlkYXRlcyB0b2tlbiBhZ2FpbnN0IHNlcnZlcgovLyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKCi8vIFJlcGxhY2VkIGJ5IHRoZSByZWFsIFZlcmNlbCBVUkwgYXQgZGVwbG95IHRpbWUuCi8vIE11c3QgbWF0Y2ggYmFja2dyb3VuZC5qcyBBUElfQkFTRS4KY29uc3QgQVBJX0JBU0UgPSAnaHR0cHM6Ly9raW10aW0tc2VydmVyLnZlcmNlbC5hcHAnOwoKbGV0IHBvbGxUaW1lciA9IG51bGw7CmxldCBhdXRoU3RhdGUgPSBudWxsOwoKLy8g4pSA4pSAIG9uIGxvYWQg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSACmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCAoKSA9PiB7CiAgLy8gSWYgYWxyZWFkeSBsb2dnZWQgaW4g4oaSIHJlZGlyZWN0CiAgY2hyb21lLnN0b3JhZ2UubG9jYWwuZ2V0KFsna2ltdGltX3Rva2VuJ10sIHJlc3VsdCA9PiB7CiAgICBpZiAocmVzdWx0LmtpbXRpbV90b2tlbikgewogICAgICB2YWxpZGF0ZUV4aXN0aW5nVG9rZW4ocmVzdWx0LmtpbXRpbV90b2tlbik7CiAgICB9CiAgfSk7CgogIGNvbnN0IHRnQnRuICAgICAgID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RnTG9naW5CdG4nKTsKICBjb25zdCB0b2tlbklucHV0ICA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0b2tlbklucHV0Jyk7CiAgY29uc3QgdG9rZW5TdWJtaXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndG9rZW5TdWJtaXQnKTsKCiAgdGdCdG4uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAgc3RhcnRUZWxlZ3JhbUxvZ2luKTsKICB0b2tlblN1Ym1pdC5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsIHN1Ym1pdE1hbnVhbFRva2VuKTsKICB0b2tlbklucHV0LmFkZEV2ZW50TGlzdGVuZXIoJ2tleWRvd24nLCBlID0+IHsKICAgIGlmIChlLmtleSA9PT0gJ0VudGVyJykgc3VibWl0TWFudWFsVG9rZW4oKTsKICB9KTsKfSk7CgovLyDilIDilIAgVmFsaWRhdGUgZXhpc3RpbmcgdG9rZW4gb24gc3RhcnR1cCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAKYXN5bmMgZnVuY3Rpb24gdmFsaWRhdGVFeGlzdGluZ1Rva2VuKHRva2VuKSB7CiAgdHJ5IHsKICAgIGNvbnN0IHJlcyA9IGF3YWl0IHNlcnZlckZldGNoKCdQT1NUJywgJy9hcGkvYXV0aC92YWxpZGF0ZScsIG51bGwsIHRva2VuKTsKICAgIGlmIChyZXMgJiYgcmVzLnN1Y2Nlc3MpIHsKICAgICAgc3RvcmVBbmRSZWRpcmVjdCh0b2tlbiwgcmVzKTsKICAgIH0KICAgIC8vIElmIGludmFsaWQg4oaSIGp1c3Qgc3RheSBvbiBsb2dpbiBwYWdlCiAgfSBjYXRjaCB7IC8qIG5ldHdvcmsgZXJyb3Ig4oCUIHN0YXkgb24gbG9naW4gcGFnZSAqLyB9Cn0KCi8vIOKUgOKUgCBGbG93IDE6IFRlbGVncmFtIGxvZ2luIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAphc3luYyBmdW5jdGlvbiBzdGFydFRlbGVncmFtTG9naW4oKSB7CiAgY29uc3QgYnRuID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RnTG9naW5CdG4nKTsKICBidG4uZGlzYWJsZWQgPSB0cnVlOwogIHNob3dNc2coJzxzcGFuIGNsYXNzPSJzcGluIj48L3NwYW4+Q29ubmVjdGluZyB0byBzZXJ2ZXLigKYnLCAnaW5mbycpOwoKICB0cnkgewogICAgLy8gMS4gQ3JlYXRlIGF1dGggc3RhdGUgb24gc2VydmVyCiAgICBjb25zdCBkYXRhID0gYXdhaXQgc2VydmVyRmV0Y2goJ1BPU1QnLCAnL2FwaS9hdXRoL2xvZ2luJyk7CiAgICBpZiAoIWRhdGEgfHwgIWRhdGEuc3VjY2VzcykgewogICAgICB0aHJvdyBuZXcgRXJyb3IoZGF0YT8uZXJyb3IgfHwgJ0ZhaWxlZCB0byBzdGFydCBsb2dpbicpOwogICAgfQoKICAgIGF1dGhTdGF0ZSA9IGRhdGEuc3RhdGU7CgogICAgLy8gMi4gT3BlbiBUZWxlZ3JhbSBkZWVwLWxpbmsgaW4gYSBuZXcgdGFiCiAgICBjaHJvbWUudGFicy5jcmVhdGUoeyB1cmw6IGRhdGEuYm90X3VybCB9LCAoKSA9PiB7fSk7CgogICAgLy8gMy4gU3RhcnQgcG9sbGluZwogICAgc2hvd01zZygKICAgICAgJzxzcGFuIGNsYXNzPSJzcGluIj48L3NwYW4+V2FpdGluZyBmb3IgVGVsZWdyYW0gYXV0aOKApiAnICsKICAgICAgJzxicj48c21hbGw+U2VuZCA8Y29kZT4vc3RhcnQ8L2NvZGU+IHRvIHRoZSBib3QgaWYgaXQgZGlkblwndCBvcGVuLjwvc21hbGw+JywKICAgICAgJ2luZm8nCiAgICApOwoKICAgIHN0YXJ0UG9sbGluZyhhdXRoU3RhdGUsIGRhdGEuZXhwaXJlc19pbiB8fCA2MDApOwoKICB9IGNhdGNoIChlcnIpIHsKICAgIHNob3dNc2coJ+KdjCAnICsgKGVyci5tZXNzYWdlIHx8ICdDb25uZWN0aW9uIGZhaWxlZCcpLCAnZXJyb3InKTsKICAgIGJ0bi5kaXNhYmxlZCA9IGZhbHNlOwogIH0KfQoKZnVuY3Rpb24gc3RhcnRQb2xsaW5nKHN0YXRlLCBleHBpcmVzSW4pIHsKICBsZXQgZWxhcHNlZCA9IDA7CiAgY29uc3QgSU5URVJWQUwgPSAzMDAwOwoKICBjbGVhckludGVydmFsKHBvbGxUaW1lcik7CiAgcG9sbFRpbWVyID0gc2V0SW50ZXJ2YWwoYXN5bmMgKCkgPT4gewogICAgZWxhcHNlZCArPSBJTlRFUlZBTDsKICAgIGlmIChlbGFwc2VkID4gZXhwaXJlc0luICogMTAwMCkgewogICAgICBjbGVhckludGVydmFsKHBvbGxUaW1lcik7CiAgICAgIHNob3dNc2coJ+KPsSBMb2dpbiB0aW1lZCBvdXQuIFBsZWFzZSB0cnkgYWdhaW4uJywgJ2Vycm9yJyk7CiAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0Z0xvZ2luQnRuJykuZGlzYWJsZWQgPSBmYWxzZTsKICAgICAgcmV0dXJuOwogICAgfQoKICAgIHRyeSB7CiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBzZXJ2ZXJGZXRjaCgnUE9TVCcsICcvYXBpL2F1dGgvcG9sbCcsIHsgc3RhdGUgfSk7CiAgICAgIGlmICghZGF0YSkgcmV0dXJuOwoKICAgICAgaWYgKGRhdGEuc3VjY2VzcyAmJiBkYXRhLnRva2VuKSB7CiAgICAgICAgY2xlYXJJbnRlcnZhbChwb2xsVGltZXIpOwogICAgICAgIHN0b3JlQW5kUmVkaXJlY3QoZGF0YS50b2tlbiwgZGF0YS51c2VyIHx8IHt9KTsKICAgICAgfSBlbHNlIGlmIChkYXRhLnN1Y2Nlc3MgPT09IGZhbHNlKSB7CiAgICAgICAgY2xlYXJJbnRlcnZhbChwb2xsVGltZXIpOwogICAgICAgIHNob3dNc2coJ+KdjCAnICsgKGRhdGEuZXJyb3IgfHwgJ0F1dGggZmFpbGVkJyksICdlcnJvcicpOwogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0Z0xvZ2luQnRuJykuZGlzYWJsZWQgPSBmYWxzZTsKICAgICAgfQogICAgICAvLyBJZiBkYXRhLnBlbmRpbmcgPT09IHRydWUg4oaSIGtlZXAgcG9sbGluZwogICAgfSBjYXRjaCB7IC8qIGlnbm9yZSB0cmFuc2llbnQgbmV0d29yayBlcnJvcnMgKi8gfQogIH0sIElOVEVSVkFMKTsKfQoKLy8g4pSA4pSAIEZsb3cgMjogTWFudWFsIHRva2VuIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAphc3luYyBmdW5jdGlvbiBzdWJtaXRNYW51YWxUb2tlbigpIHsKICBjb25zdCBpbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0b2tlbklucHV0Jyk7CiAgY29uc3QgdG9rZW4gPSBpbnB1dC52YWx1ZS50cmltKCk7CgogIGlmICghdG9rZW4pIHsKICAgIHNob3dNc2coJ1BsZWFzZSBwYXN0ZSB5b3VyIHRva2VuLicsICdlcnJvcicpOwogICAgcmV0dXJuOwogIH0KCiAgY29uc3QgYnRuID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Rva2VuU3VibWl0Jyk7CiAgYnRuLmRpc2FibGVkID0gdHJ1ZTsKICBzaG93TXNnKCc8c3BhbiBjbGFzcz0ic3BpbiI+PC9zcGFuPlZhbGlkYXRpbmfigKYnLCAnaW5mbycpOwoKICB0cnkgewogICAgY29uc3QgZGF0YSA9IGF3YWl0IHNlcnZlckZldGNoKCdQT1NUJywgJy9hcGkvYXV0aC92YWxpZGF0ZScsIG51bGwsIHRva2VuKTsKICAgIGlmIChkYXRhICYmIGRhdGEuc3VjY2VzcykgewogICAgICBzdG9yZUFuZFJlZGlyZWN0KHRva2VuLCBkYXRhKTsKICAgIH0gZWxzZSB7CiAgICAgIHNob3dNc2coJ+KdjCAnICsgKGRhdGE/LmVycm9yIHx8ICdJbnZhbGlkIHRva2VuJyksICdlcnJvcicpOwogICAgICBidG4uZGlzYWJsZWQgPSBmYWxzZTsKICAgIH0KICB9IGNhdGNoIChlcnIpIHsKICAgIHNob3dNc2coJ+KdjCAnICsgKGVyci5tZXNzYWdlIHx8ICdDb25uZWN0aW9uIGZhaWxlZCcpLCAnZXJyb3InKTsKICAgIGJ0bi5kaXNhYmxlZCA9IGZhbHNlOwogIH0KfQoKLy8g4pSA4pSAIFN0b3JlIHRva2VuICsgdXNlciBpbmZvIGFuZCBvcGVuIHBvcHVwIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiBzdG9yZUFuZFJlZGlyZWN0KHRva2VuLCB1c2VyKSB7CiAgY29uc3Qgc2F2ZXMgPSB7CiAgICBraW10aW1fdG9rZW46ICAgICAgdG9rZW4sCiAgICBraW10aW1fdXNlcl9pZDogICAgdXNlci51c2VyX2lkICAgIHx8ICcnLAogICAga2ltdGltX2ZpcnN0X25hbWU6IHVzZXIuZmlyc3RfbmFtZSB8fCAnJywKICAgIGtpbXRpbV9wZnBfdXJsOiAgICB1c2VyLnBmcF91cmwgICAgfHwgJycKICB9OwogIGNocm9tZS5zdG9yYWdlLmxvY2FsLnNldChzYXZlcywgKCkgPT4gewogICAgc2hvd01zZygn4pyFIExvZ2dlZCBpbiEgTG9hZGluZ+KApicsICdzdWNjZXNzJyk7CiAgICBzZXRUaW1lb3V0KCgpID0+IHsgd2luZG93LmxvY2F0aW9uLmhyZWYgPSAncG9wdXAuaHRtbCc7IH0sIDgwMCk7CiAgfSk7Cn0KCi8vIOKUgOKUgCBTaGFyZWQgZmV0Y2ggaGVscGVyIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgAphc3luYyBmdW5jdGlvbiBzZXJ2ZXJGZXRjaChtZXRob2QsIHBhdGgsIGJvZHksIHRva2VuKSB7CiAgY29uc3QgaGVhZGVycyA9IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9OwogIGlmICh0b2tlbikgaGVhZGVyc1snQXV0aG9yaXphdGlvbiddID0gJ0JlYXJlciAnICsgdG9rZW47CgogIGNvbnN0IG9wdHMgPSB7IG1ldGhvZCwgaGVhZGVycyB9OwogIGlmIChib2R5KSBvcHRzLmJvZHkgPSBKU09OLnN0cmluZ2lmeShib2R5KTsKCiAgY29uc3QgY29udHJvbGxlciA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICBjb25zdCB0aWQgPSBzZXRUaW1lb3V0KCgpID0+IGNvbnRyb2xsZXIuYWJvcnQoKSwgMjAwMDApOwoKICB0cnkgewogICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goQVBJX0JBU0UgKyBwYXRoLCB7IC4uLm9wdHMsIHNpZ25hbDogY29udHJvbGxlci5zaWduYWwgfSk7CiAgICBjb25zdCB0ZXh0ID0gYXdhaXQgcmVzLnRleHQoKTsKICAgIHRyeSB7IHJldHVybiBKU09OLnBhcnNlKHRleHQpOyB9IGNhdGNoIHsgcmV0dXJuIG51bGw7IH0KICB9IGZpbmFsbHkgewogICAgY2xlYXJUaW1lb3V0KHRpZCk7CiAgfQp9CgovLyDilIDilIAgVUkgaGVscGVyIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgApmdW5jdGlvbiBzaG93TXNnKGh0bWwsIHR5cGUpIHsKICBjb25zdCBlbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtc2cnKTsKICBlbC5pbm5lckhUTUwgPSBodG1sOwogIGVsLmNsYXNzTmFtZSA9ICdtc2cgc2hvdyAnICsgdHlwZTsKfQo=
+'use strict';
+// ────────────────────────────────────────────────────────────
+// login.js  —  kimtim v2 server-based login
+//
+// Two flows:
+//   1. Telegram login  → opens bot deep-link, polls server
+//   2. Manual token    → validates token against server
+// ────────────────────────────────────────────────────────────
+
+// Replaced by the real Vercel URL at deploy time.
+// Must match background.js API_BASE.
+const API_BASE = 'https://kimtim-server.vercel.app';
+
+let pollTimer = null;
+let authState = null;
+
+// ── on load ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // If already logged in → redirect
+  chrome.storage.local.get(['kimtim_token'], result => {
+    if (result.kimtim_token) {
+      validateExistingToken(result.kimtim_token);
+    }
+  });
+
+  const tgBtn       = document.getElementById('tgLoginBtn');
+  const tokenInput  = document.getElementById('tokenInput');
+  const tokenSubmit = document.getElementById('tokenSubmit');
+
+  tgBtn.addEventListener('click',  startTelegramLogin);
+  tokenSubmit.addEventListener('click', submitManualToken);
+  tokenInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitManualToken();
+  });
+});
+
+// ── Validate existing token on startup ───────────────────────
+async function validateExistingToken(token) {
+  try {
+    const res = await serverFetch('POST', '/api/auth/validate', null, token);
+    if (res && res.success) {
+      storeAndRedirect(token, res);
+    }
+    // If invalid → just stay on login page
+  } catch { /* network error — stay on login page */ }
+}
+
+// ── Flow 1: Telegram login ────────────────────────────────────
+async function startTelegramLogin() {
+  const btn = document.getElementById('tgLoginBtn');
+  btn.disabled = true;
+  showMsg('<span class="spin"></span>Connecting to server…', 'info');
+
+  try {
+    // 1. Create auth state on server
+    const data = await serverFetch('POST', '/api/auth/login');
+    if (!data || !data.success) {
+      throw new Error(data?.error || 'Failed to start login');
+    }
+
+    authState = data.state;
+
+    // 2. Open Telegram deep-link in a new tab
+    chrome.tabs.create({ url: data.bot_url }, () => {});
+
+    // 3. Start polling
+    showMsg(
+      '<span class="spin"></span>Waiting for Telegram auth… ' +
+      '<br><small>Send <code>/start</code> to the bot if it didn\'t open.</small>',
+      'info'
+    );
+
+    startPolling(authState, data.expires_in || 600);
+
+  } catch (err) {
+    showMsg('❌ ' + (err.message || 'Connection failed'), 'error');
+    btn.disabled = false;
+  }
+}
+
+function startPolling(state, expiresIn) {
+  let elapsed = 0;
+  const INTERVAL = 3000;
+
+  clearInterval(pollTimer);
+  pollTimer = setInterval(async () => {
+    elapsed += INTERVAL;
+    if (elapsed > expiresIn * 1000) {
+      clearInterval(pollTimer);
+      showMsg('⏱ Login timed out. Please try again.', 'error');
+      document.getElementById('tgLoginBtn').disabled = false;
+      return;
+    }
+
+    try {
+      const data = await serverFetch('POST', '/api/auth/poll', { state });
+      if (!data) return;
+
+      if (data.success && data.token) {
+        clearInterval(pollTimer);
+        storeAndRedirect(data.token, data.user || {});
+      } else if (data.success === false) {
+        clearInterval(pollTimer);
+        showMsg('❌ ' + (data.error || 'Auth failed'), 'error');
+        document.getElementById('tgLoginBtn').disabled = false;
+      }
+      // If data.pending === true → keep polling
+    } catch { /* ignore transient network errors */ }
+  }, INTERVAL);
+}
+
+// ── Flow 2: Manual token ──────────────────────────────────────
+async function submitManualToken() {
+  const input = document.getElementById('tokenInput');
+  const token = input.value.trim();
+
+  if (!token) {
+    showMsg('Please paste your token.', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('tokenSubmit');
+  btn.disabled = true;
+  showMsg('<span class="spin"></span>Validating…', 'info');
+
+  try {
+    const data = await serverFetch('POST', '/api/auth/validate', null, token);
+    if (data && data.success) {
+      storeAndRedirect(token, data);
+    } else {
+      showMsg('❌ ' + (data?.error || 'Invalid token'), 'error');
+      btn.disabled = false;
+    }
+  } catch (err) {
+    showMsg('❌ ' + (err.message || 'Connection failed'), 'error');
+    btn.disabled = false;
+  }
+}
+
+// ── Store token + user info and open popup ────────────────────
+function storeAndRedirect(token, user) {
+  const saves = {
+    kimtim_token:      token,
+    kimtim_user_id:    user.user_id    || '',
+    kimtim_first_name: user.first_name || '',
+    kimtim_pfp_url:    user.pfp_url    || ''
+  };
+  chrome.storage.local.set(saves, () => {
+    showMsg('✅ Logged in! Loading…', 'success');
+    setTimeout(() => { window.location.href = 'popup.html'; }, 800);
+  });
+}
+
+// ── Shared fetch helper ───────────────────────────────────────
+async function serverFetch(method, path, body, token) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+
+  const opts = { method, headers };
+  if (body) opts.body = JSON.stringify(body);
+
+  const controller = new AbortController();
+  const tid = setTimeout(() => controller.abort(), 20000);
+
+  try {
+    const res = await fetch(API_BASE + path, { ...opts, signal: controller.signal });
+    const text = await res.text();
+    try { return JSON.parse(text); } catch { return null; }
+  } finally {
+    clearTimeout(tid);
+  }
+}
+
+// ── UI helper ────────────────────────────────────────────────
+function showMsg(html, type) {
+  const el = document.getElementById('msg');
+  el.innerHTML = html;
+  el.className = 'msg show ' + type;
+}
